@@ -25,7 +25,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.w3c.dom.Text;
 
-public class No1 {
+public class makeCollection {
 	
 	
 	
@@ -82,20 +82,10 @@ public class No1 {
 		transformer.setOutputProperty(OutputKeys.ENCODING,"UTF-8");
 		
 		DOMSource source = new DOMSource(doc);
-		StreamResult result=new StreamResult(new FileOutputStream(new File("C:\\Users\\Hyeonji\\Desktop\\4-1/collection.xml")));
+		StreamResult result=new StreamResult(new FileOutputStream(new File("C:\\Users\\Hyeonji\\Desktop\\4-1\\OpenSource/collection.xml")));
 		transformer.transform(source, result);
 		
-//		String url = "https://zozo.jp/search/?sex=men";
-//		org.jsoup.nodes.Document document = Jsoup.connect(url).get();//해당 URL에 연결
-//		Elements p_name = document.getElementsByClass("catalog-h"); // class이름으로 긁기
-//		Elements p_price = document.getElementsByClass("catalog-price"); 
-//		for(Element a : p_name)
-//			System.out.println(a.text()); // 해당 태그내용 출력
-		
-		
-		
-		
-		
+
 		
 	}
 
