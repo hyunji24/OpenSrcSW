@@ -30,7 +30,9 @@ public class makeCollection {
 	
 	
 	
-	public static void main(String[] args) throws IOException, ParserConfigurationException, TransformerException {
+	//public static void main(String[] args) throws IOException, ParserConfigurationException, TransformerException {
+		
+		static void make_Collection(String str) throws ParserConfigurationException, IOException, TransformerException {
 		// TODO Auto-generated method stub
 		
 		
@@ -49,8 +51,8 @@ public class makeCollection {
 		String[] food= {"떡","라면","아이스크림","초밥","파스타"};
 		
 		for(int i=0;i<food.length;i++) {
-			
-		File input=new File("C:\\Users\\Hyeonji\\Desktop\\4-1\\OpenSource\\week2_html\\"+food[i]+".html");
+			// "C:\\Users\\Hyeonji\\Desktop\\4-1\\OpenSource\\week2_html\\"
+		File input=new File(str+"\\"+food[i]+".html");
 
 		org.jsoup.nodes.Document docu=Jsoup.parse(input,"UTF-8");
 		Elements name=docu.getElementsByTag("title");
@@ -85,8 +87,8 @@ public class makeCollection {
 		StreamResult result=new StreamResult(new FileOutputStream(new File("C:\\Users\\Hyeonji\\Desktop\\4-1\\OpenSource/collection.xml")));
 		transformer.transform(source, result);
 		
-
+		}
 		
-	}
+	//}
 
 }
