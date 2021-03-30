@@ -16,6 +16,6 @@ public class kuir {
 	
 		if(args[0].equals("-c")) makeCollection.make_Collection(args[1]);
 		if(args[0].equals("-k")) makeKeyword.make_Keyword(args[1]);
-		
+		if(args[0].equals("-i")) indexer.make_indexPost(args[1]);
 	}
 }

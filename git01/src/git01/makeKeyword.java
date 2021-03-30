@@ -3,6 +3,7 @@ package git01;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,10 +31,6 @@ import org.xml.sax.SAXException;
 public class makeKeyword {
 	
 
-	void make_indexXml(int food_length) throws ParserConfigurationException {
-		
-		
-	}
 
 	
 	static void make_Keyword(String xmlLocation) throws ParserConfigurationException, SAXException, IOException, TransformerException { //xmlLocation에는 collection.xml의 경로가 포함되어있음
@@ -50,11 +47,14 @@ public class makeKeyword {
 		
 		String bodyContent="";
 		
+
+		
 		for(int i=0;i<foodList.getLength();i++) { //5개
 			
 		Node nodeItem=foodList.item(i);
 		Element element = (Element)nodeItem;
 		String newbody = "";
+
 		
 		bodyContent=element.getElementsByTagName("body").item(0).getTextContent();
 		KeywordExtractor ke=new KeywordExtractor();
@@ -62,6 +62,7 @@ public class makeKeyword {
 		for(int j=0;j<kl.size();j++) {
 			Keyword kwrd=kl.get(j);
 			newbody+=kwrd.getString()+":"+kwrd.getCnt()+"#";	
+			//KeywordHashmap.put(kwrd.getString(), kwrd.getCnt());
 
 			}
 		
