@@ -1,0 +1,29 @@
+[33mcommit 0d506abd1e10e97788732cc248f88fc8989143a8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: hyunji <24hyunji@naver.com>
+Date:   Tue Mar 30 11:26:04 2021 +0900
+
+    third commit / index.xml->index.post
+
+[33mcommit fbc726978f64fbc53646126c31c01c0ac0fdd9b0[m
+Author: hyunji <24hyunji@naver.com>
+Date:   Sat Mar 27 20:22:16 2021 +0900
+
+    README
+
+[33mcommit 5eb19ef32092ab3ae622cef5e98d3c7354a9c7fc[m
+Author: hyunji <24hyunji@naver.com>
+Date:   Sun Mar 21 17:14:10 2021 +0900
+
+    second commit / collection.xml -> index.xml
+
+[33mcommit e007b74adc44d7bbb99befe7a077935265acb323[m
+Author: hyunji <24hyunji@naver.com>
+Date:   Thu Mar 18 13:47:13 2021 +0900
+
+    first commit / html->xml
+
+[33mcommit 07b9c9739eba9287a80ea2f9484b65db024e0d7a[m
+Author: hyunji <24hyunji@naver.com>
+Date:   Thu Mar 18 10:56:43 2021 +0900
+
+    first commit / html->collection.xml
