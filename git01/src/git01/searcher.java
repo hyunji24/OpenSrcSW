@@ -70,8 +70,8 @@ public class searcher {
 
 		for(int i=0;i<foodList.getLength();i++) { //문서개수 변수로 바꿔야됨
 		
-			//Qidt_array.add(CalcSim(hashMap,i));
-			Qidt_map.put(i,CalcSim(hashMap,i));
+			
+			Qidt_map.put(i,InnerProduct(hashMap,i));
 		}
 		
 		
@@ -105,7 +105,7 @@ public class searcher {
 	
 	
 	
-	static double CalcSim(HashMap<String,List<Double>> hashMap,int i) {
+	static double InnerProduct(HashMap<String,List<Double>> hashMap,int i) {
 		double Qidt=0;
 		double x=0;
 		for(int j=0;j<keywordlist.size();j++) { //라면,면,분말,스프 (4개의 키워드에 대해서)
