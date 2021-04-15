@@ -29,14 +29,17 @@ public class searcher {
 	static List<Integer> wq=new ArrayList<Integer>();
 	static List<Double> Qidt_array = new ArrayList<Double>();
 
-//<<<<<<< HEAD
-	static double CalcSim2(HashMap<String,List<Double>> hashMap,int i) {
-		return i;
-}
 
-	static double InnerProduct(HashMap<String,List<Double>> hashMap,int i) {
-		double Qidt=0;
-		double x=0;
+	static double CalcSim(double Qidn,HashMap<String,List<Double>> hashMap,int i) {
+		double ans;
+		
+		double rootQ=0,rootidx=0,rootsum=0,x=0;
+		
+		for(int j=0;j<wq.size();j++) {
+			rootsum+=Math.pow(wq.get(j), 2);
+		}
+		rootQ=Math.sqrt(rootsum);
+		
 		for(int j=0;j<keywordlist.size();j++) { //라면,면,분말,스프 (4개의 키워드에 대해서)
 			Iterator<String> it=hashMap.keySet().iterator();
 			while(it.hasNext()) {
@@ -54,8 +57,39 @@ public class searcher {
 				}
 				
 			}
-			Qidt+=(wq.get(j))*x;
+			rootidx+=Math.pow(x, 2);
 			//System.out.print("+("+(wq.get(j))+"x"+x+")");
+			
+		}
+		rootidx=Math.sqrt(rootidx);
+		
+		ans=Qidn/(rootQ*rootidx);
+		return Math.round(ans*100)/100.0;
+}
+
+	static double InnerProduct(HashMap<String,List<Double>> hashMap,int i) {
+		double Qidt=0;
+		double x=0;
+		//List<Double> xArray = new ArrayList<Double>();
+		for(int j=0;j<keywordlist.size();j++) { //라면,면,분말,스프 (4개의 키워드에 대해서)
+			Iterator<String> it=hashMap.keySet().iterator();
+			while(it.hasNext()) { //hashMap value리스트에 원소가 있다면
+				String key=it.next();
+				if(key.equals(keywordlist.get(j))){ //키워드를 index.post의 key와 비교
+					List<Double> value=hashMap.get(key); 
+					for(int k=0;k<value.size();k++) {
+						if((value.get(k)).equals((double)i)){
+							x=value.get(k+1);
+							break;
+						}
+						else x=0;
+					}
+					
+				}
+				
+			}
+			Qidt+=(wq.get(j))*x; //4개의 내적값 더한게 Qidt
+			
 			
 		}
 		return Math.round(Qidt*100)/100.0;
@@ -102,8 +136,10 @@ static void search_query(String postLocation,String args2, String query) throws 
 		for(int i=0;i<foodList.getLength();i++) { //문서개수 변수로 바꿔야됨
 		
 			//Qidt_array.add(CalcSim(hashMap,i));
-			Qidt_map.put(i,InnerProduct(hashMap,i));
+			Qidt_map.put(i,CalcSim(InnerProduct(hashMap,i),hashMap,i));
 		}
+		
+		//System.out.println(Qidt_map);
 		
 		
 		List<Integer> keySetList = new ArrayList<>(Qidt_map.keySet());
@@ -112,6 +148,9 @@ static void search_query(String postLocation,String args2, String query) throws 
 		for(Integer key : keySetList) {
 //			//System.out.println("key : " + key + " / " + "value : " + Qidt_map.get(key));
 //			//doc id가 key 인것의 title 가져와서 출력
+			if(Qidt_map.get(key)==0.0) {
+				continue;
+			}
 			if(cnt==3)break;
 			for(int i=0;i<foodList.getLength();i++) {
 				Element element=(Element)foodList.item(i);
